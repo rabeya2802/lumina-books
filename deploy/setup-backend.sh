@@ -57,7 +57,7 @@ if [ -d "$APP_DIR/.git" ]; then
   echo "   Already exists — pulling latest."
   cd "$APP_DIR" && sudo git pull
 else
-  sudo git clone https://github.com/rabeya2802/luminous-logic.git "$APP_DIR"
+  sudo git clone https://github.com/rabeya2802/lumina-books.git "$APP_DIR"
 fi
 sudo chown -R "$USER":"$USER" "$APP_DIR"
 
