@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ============================================
+   BOOKHUB DESIGN SYSTEM
+   ============================================
+   Brand: Teal (#0F766E, #14B8A6) on warm paper
+   Fonts: Playfair Display (headings) + Inter (body)
+   ============================================ */
+
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  --brand: #0f766e;
+  --brand-dark: #115e59;
+  --brand-light: #ccfbf1;
+  --brand-soft: #f0fdfa;
+  --accent: #14b8a6;
+  --accent-dark: #0d9488;
+  --ink: #1c1917;
+  --paper: #fafaf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keep hash-link targets clear of the sticky navigation. */
+  scroll-padding-top: 5rem;
+}
+
+/* Respect visitors who request less motion while keeping the default smooth. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: #fafaf9;
+  color: #1c1917;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Responsive images — never overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive tables — horizontal scroll wrapper */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text from causing horizontal scroll — only break when necessary */
+p, span, li, td, th, label, a, button {
+  overflow-wrap: break-word;
+}
+
+/* Ensure pre/code blocks don't break layout */
+pre, code {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Responsive font scaling for headings */
+h1 { font-size: clamp(1.75rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+
+/* Typography helpers */
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.font-body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* Reusable container */
+.container-app {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-app {
+    padding-inline: 2rem;
+  }
+}
+
+/* Custom gradient backgrounds */
+.bg-paper {
+  background-color: #fafaf9;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #115e59 0%, #0f766e 50%, #14b8a6 100%);
+}
+
+.bg-hero-radial {
+  background:
+    radial-gradient(circle at 20% 20%, #ccfbf1 0%, transparent 50%),
+    radial-gradient(circle at 80% 0%, #f0fdfa 0%, transparent 45%),
+    linear-gradient(180deg, #f0fdfa 0%, #fafaf8 100%);
+}
+
+/* Homepage hero only: warm ivory/beige base with a faint teal glow (brand accent) */
+.bg-hero-warm {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(15, 118, 110, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 15% 15%, rgba(15, 118, 110, 0.05) 0%, transparent 45%),
+    linear-gradient(180deg, #fdf8f0 0%, #faf5ea 100%);
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(15, 118, 110, 0.18);
+}
+
+/* Underline grow animation for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Fancy divider */
+.fancy-divider {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #0f766e;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.fancy-divider::before,
+.fancy-divider::after {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: #0f766e;
+  opacity: 0.4;
+}
+
+/* Subtle fade-in for page transitions */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease both;
+}
+
+/* Marquee for testimonial / feature strip */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Custom Toast Styles */
+.toast-custom {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  padding: 16px !important;
+  font-family: "Inter", system-ui, sans-serif !important;
+  min-width: 320px !important;
+}
+
+.toast-body-custom {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #1f2937 !important;
+}
+
+.toast-progress-custom {
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: #0f766e !important;
+}
+
+/* Mobile-friendly touch targets */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid #0f766e;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Horizontal scroll utility for trending rows */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.scroll-snap-x::-webkit-scrollbar {
+  display: none;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}
+
+/* Soft pastel category backgrounds */
+.cat-pastel-teal {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+}
+.cat-pastel-rose {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+}
+.cat-pastel-amber {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+}
+.cat-pastel-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+.cat-pastel-violet {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+}
+.cat-pastel-stone {
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0f766e;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
