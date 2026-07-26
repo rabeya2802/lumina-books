@@ -254,7 +254,7 @@ function Login({ onLoginStatusChange }) {
               📚
             </span>
             <h2 className="mt-3 font-display text-3xl font-bold text-stone-900">
-              Book<span className="text-emerald-700">Hub</span>
+              Lumina<span className="text-emerald-700">Books</span>
             </h2>
             <p className="mt-1 text-stone-500">Your online bookstore</p>
           </div>
